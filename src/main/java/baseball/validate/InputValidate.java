@@ -1,6 +1,7 @@
 package baseball.validate;
 
 import baseball.domain.BaseBallGameRule;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +15,23 @@ public class InputValidate extends BaseBallGameRule {
     public List<Integer> numbersCheck(String givenInputs) {
         List<Integer> given = numbersFormat(Arrays.asList(givenInputs.split("")));
         sizeCheck(given);
+        numbersRangeCheck(given);
         return given;
+    }
+
+    public void numbersRangeCheck(List<Integer> given) {
+        for (Integer numberGiven  : given) {
+            rangeCheck(numberGiven);
+        }
+    }
+
+    public void rangeCheck(Integer numberGiven) {
+        if(minValueOfBall > numberGiven) {
+            throw new IllegalArgumentException("Error");
+        }
+        if(maxValueOfBall < numberGiven) {
+            throw new IllegalArgumentException("Error");
+        }
     }
 
     private void sizeCheck(List<Integer> given) {
