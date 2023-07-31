@@ -1,4 +1,4 @@
-package baseball.view.input;
+package baseball.controller.input;
 
 import baseball.util.Convertion;
 import baseball.view.output.Notification;
