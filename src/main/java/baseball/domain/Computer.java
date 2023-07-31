@@ -30,6 +30,23 @@ public class Computer extends GameComputer {
         return Randoms.pickNumberInRange(minValueOfBall, maxValueOfBall);
     }
 
+    public int getHint(Ball ball, int givenOrder) {
+        int answerBallOrder = 0;
+        for (Ball computerBall : balls) {
+            if (ball.equals(computerBall)) {
+                return checkOrder(answerBallOrder, givenOrder);
+            }
+            answerBallOrder++;
+        }
+        return nothingHit;
+    }
+
+    private Integer checkOrder(int answerBallOrder, int givenOrder) {
+        if (answerBallOrder == givenOrder) {
+            return strikeHit;
+        }
+        return ballHit;
+    }
 }
 
 
