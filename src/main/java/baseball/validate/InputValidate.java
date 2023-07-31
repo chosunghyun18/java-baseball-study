@@ -27,10 +27,10 @@ public class InputValidate extends BaseBallGameRule {
 
     public void rangeCheck(Integer numberGiven) {
         if(minValueOfBall > numberGiven) {
-            throw new IllegalArgumentException("Error");
+            throw new IllegalArgumentException("Error under range min value");
         }
         if(maxValueOfBall < numberGiven) {
-            throw new IllegalArgumentException("Error");
+            throw new IllegalArgumentException("Error over range max value");
         }
     }
 
