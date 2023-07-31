@@ -51,6 +51,12 @@ public class Player extends GamePlayer {
         }
     }
 
+    private boolean swingResult(Computer computer) {
+        incrementCountsBasedOnHits(computer);
+        displayHintToUser(computer);
+        return checkForGameEnd();
+    }
+
     public void savePlayerBalls(List<Integer> numbers) {
         for (Integer number : numbers) {
             balls.add(new Ball(number));
@@ -65,15 +71,17 @@ public class Player extends GamePlayer {
     private void incrementCountsBasedOnHits(Computer computer) {
         int playerBallOrder = 0;
         for (Ball playerBall : balls) {
-            int result = computer.getHint(playerBall, playerBallOrder);
+            int result = computer.processHint(playerBall, playerBallOrder);
             playerBallOrder++;
-            if (result == strikeHit) {
-                strikeCount++;
-                continue;
-            }
-            if (result == ballHit) {
-                ballCount++;
-            }
+            processResult(result);
+        }
+    }
+
+    private void processResult(int result) {
+        if (result == strikeHit) {
+            strikeCount++;
+        } else if (result == ballHit) {
+            ballCount++;
         }
     }
 
@@ -87,11 +95,5 @@ public class Player extends GamePlayer {
             return true;
         }
         return false;
-    }
-
-    private boolean swingResult(Computer computer) {
-        incrementCountsBasedOnHits(computer);
-        displayHintToUser(computer);
-        return checkForGameEnd();
     }
 }
