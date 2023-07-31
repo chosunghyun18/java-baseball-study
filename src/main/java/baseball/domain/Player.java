@@ -22,6 +22,12 @@ public class Player extends GamePlayer {
         this.ballCount = 0;
     }
 
+    private void initSettings() {
+        this.strikeCount = 0;
+        this.ballCount = 0;
+        this.balls = new LinkedHashSet<>();
+    }
+
     public static Player readyPlayer() {
         return new Player();
     }
@@ -51,35 +57,41 @@ public class Player extends GamePlayer {
         }
     }
 
-    private void initSettings() {
-        this.strikeCount = 0;
-        this.ballCount = 0;
-        this.balls = new LinkedHashSet<>();
-    }
-
     public List<Integer> getGuessNumbers() {
         String givenInput = Console.readLine();
         return inputValidate.numbersCheck(givenInput);
     }
 
-    private boolean swingResult(Computer computer) {
+    private void incrementCountsBasedOnHits(Computer computer) {
         int playerBallOrder = 0;
         for (Ball playerBall : balls) {
             int result = computer.getHint(playerBall, playerBallOrder);
             playerBallOrder++;
             if (result == strikeHit) {
-                strikeCount += 1;
+                strikeCount++;
                 continue;
             }
             if (result == ballHit) {
-                ballCount += 1;
+                ballCount++;
             }
         }
+    }
+
+    private void displayHintToUser(Computer computer) {
         computer.showHint(strikeCount, ballCount);
+    }
+
+    private boolean checkForGameEnd() {
         if (strikeCount == maxNumberOfBallsAmount) {
             System.out.println(maxNumberOfBallsAmount + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
         return false;
+    }
+
+    private boolean swingResult(Computer computer) {
+        incrementCountsBasedOnHits(computer);
+        displayHintToUser(computer);
+        return checkForGameEnd();
     }
 }
