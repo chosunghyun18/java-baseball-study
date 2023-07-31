@@ -7,12 +7,12 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 
 public class InningInput {
-    private ArrayList<Integer> numberInput() {
+    public static ArrayList<Integer> numberInput() {
         Notification.numberInput();
         String input = Console.readLine();
         return Convertion.stringToArrayList(input);
     }
-    private int restartInput() {
+    public static int restartInput() {
         Notification.gameRestart();
         String input = Console.readLine();
         return Integer.parseInt(input);
