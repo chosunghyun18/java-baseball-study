@@ -1,5 +1,7 @@
-package baseball.domain;
+package baseball.domain.player;
 
+import baseball.domain.ball.PlayerBall;
+import baseball.domain.computer.Computer;
 import baseball.validate.InputValidate;
 import baseball.view.InputView;
 import camp.nextstep.edu.missionutils.Console;
@@ -9,7 +11,7 @@ import java.util.Set;
 
 public class Player extends GamePlayer {
 
-    private Set<Ball> balls;
+    private Set<PlayerBall> balls;
     private final InputValidate inputValidate;
     private final InputView inputView;
     private int strikeCount;
@@ -59,7 +61,7 @@ public class Player extends GamePlayer {
 
     public void savePlayerBalls(List<Integer> numbers) {
         for (Integer number : numbers) {
-            balls.add(new Ball(number));
+            balls.add(new PlayerBall(number));
         }
     }
 
@@ -70,7 +72,7 @@ public class Player extends GamePlayer {
 
     private void incrementCountsBasedOnHits(Computer computer) {
         int playerBallOrder = 0;
-        for (Ball playerBall : balls) {
+        for (PlayerBall playerBall : balls) {
             int result = computer.processHint(playerBall, playerBallOrder);
             playerBallOrder++;
             processResult(result);

@@ -1,5 +1,7 @@
-package baseball.domain;
+package baseball.domain.computer;
 
+import baseball.domain.ball.ComputerBall;
+import baseball.domain.ball.PlayerBall;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.LinkedHashSet;
@@ -7,7 +9,7 @@ import java.util.Set;
 
 public class Computer extends GameComputer {
 
-    private Set<Ball> balls;
+    private Set<ComputerBall> balls;
 
     private Computer() {
         this.balls = new LinkedHashSet<>();
@@ -22,7 +24,8 @@ public class Computer extends GameComputer {
     public void setUpGame() {
         while (balls.size() < maxNumberOfBallsAmount) {
             int randomNumber = pickNumber(minValueOfBall, maxValueOfBall);
-            balls.add(new Ball(randomNumber));
+            System.out.println(randomNumber);
+            balls.add(new ComputerBall(randomNumber));
         }
     }
 
@@ -30,9 +33,9 @@ public class Computer extends GameComputer {
         return Randoms.pickNumberInRange(minValueOfBall, maxValueOfBall);
     }
 
-    public int processHint(Ball ball, int givenOrder) {
+    public int processHint(PlayerBall ball, int givenOrder) {
         int answerBallOrder = 0;
-        for (Ball computerBall : balls) {
+        for (ComputerBall computerBall : balls) {
             if (ball.equals(computerBall)) {
                 return checkOrder(answerBallOrder, givenOrder);
             }

@@ -1,4 +1,9 @@
-package baseball.domain;
+package baseball.domain.game;
+
+import baseball.domain.player.GamePlayer;
+import baseball.domain.player.Player;
+import baseball.domain.computer.Computer;
+import baseball.domain.computer.GameComputer;
 
 public class Game extends BaseBallGameRule {
 

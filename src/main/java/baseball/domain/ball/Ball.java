@@ -1,19 +1,14 @@
-package baseball.domain;
+package baseball.domain.ball;
 
+import baseball.domain.game.BaseBallGameRule;
 import java.util.Objects;
 
-public class Ball {
-
+class Ball extends BaseBallGameRule {
     private final Integer ball;
 
     public Ball(Integer givenNumber) {
         this.ball = Objects.requireNonNull(givenNumber);
     }
-
-    public Integer getValueForTest() {
-        return ball;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

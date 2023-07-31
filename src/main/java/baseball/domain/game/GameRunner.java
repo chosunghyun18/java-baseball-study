@@ -1,5 +1,6 @@
-package baseball.domain;
+package baseball.domain.game;
 
+import baseball.domain.game.Game;
 import baseball.view.OutPutView;
 
 public class GameRunner {
