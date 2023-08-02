@@ -1,27 +1,23 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        List<Integer> computer = generateRandomNumber();
-
-
+        do{
+            Game game = new Game();
+            game.startGame();
+        }while(againGame());
     }
 
-    //랜덤 숫자 생성 메서드
-    public static List<Integer> generateRandomNumber(){
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        return computer;
+    //사용자에게 입력 받아서 게임 다시 시작 또는 종료
+    private static boolean againGame() {
+        //사용자에게 입력 받음
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String retryGameInput = Console.readLine();
+
+        RetryGame retryGame = new RetryGame(retryGameInput);
+        return retryGame.validateInput();
     }
 }
