@@ -5,20 +5,17 @@ import baseball.view.OutputView;
 import java.util.HashMap;
 import java.util.List;
 
-import static baseball.util.Message.*;
-
 public class Judge {
-    private final Computer computer;
     private final Player player;
+    private final List<Integer> computerNumber;
     private HashMap<Character, Integer> baseballScore;
 
     public Judge(){
-        this.computer = new Computer();
+        this.computerNumber = Computer.generateRandomNumber();
         this.player = new Player();
     }
 
     public void compare(){
-        List<Integer> computerNumber = computer.generateRandomNumber();
         do{
             initBaseballScore();
             //플레이어 처리하고 결과 값 얻어서 결과값 가지고 다음 함수로 이동.
@@ -54,7 +51,6 @@ public class Judge {
         }
         return ballNumber;
     }
-
 
     //해당 결과에 맞게 문자열 출력
     public void printResult(){

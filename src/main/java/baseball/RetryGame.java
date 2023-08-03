@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import baseball.view.InputView;
 
 import static baseball.util.Message.*;
+import static baseball.validateInput.retryGameValidateInput;
 
 public class RetryGame {
 
@@ -13,15 +14,6 @@ public class RetryGame {
         InputView.printRestartMessage();
         String retryGameInput = Console.readLine();
 
-        return validateInput(retryGameInput);
-    }
-
-    //입력 유효 판단
-    public static boolean validateInput(String retryGameInput) throws IllegalArgumentException {
-        if (retryGameInput.equals(RESTART_GAME_NUMBER))
-            return true;
-        else if (!retryGameInput.equals(END_GAME_NUMBER))
-            throw new IllegalArgumentException(RESTART_MESSAGE_ERROR);
-        return false;
+        return retryGameValidateInput(retryGameInput);
     }
 }
