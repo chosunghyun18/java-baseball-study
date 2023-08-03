@@ -1,5 +1,7 @@
 package baseball;
 
+import static util.Message.*;
+
 public class RetryGame {
     private final String retryGameInput;
 
@@ -9,10 +11,10 @@ public class RetryGame {
 
     //입력 유효 판단
     public boolean validateInput() throws IllegalArgumentException {
-        if (retryGameInput.equals("1"))
+        if (retryGameInput.equals(RESTART_GAME_NUMBER))
             return true;
-        else if (!retryGameInput.equals("2"))
-            throw new IllegalArgumentException("1 또는 2의 값을 입력하세요.");
+        else if (!retryGameInput.equals(END_GAME_NUMBER))
+            throw new IllegalArgumentException(RESTART_MESSAGE_ERROR);
         return false;
     }
 }
