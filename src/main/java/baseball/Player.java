@@ -21,7 +21,7 @@ public class Player {
 
     //입력을 받는다.
     public boolean getPlayerInput(){
-        System.out.println(GET_PLAYER_INPUT);
+        System.out.print(GET_PLAYER_INPUT);
         playerInput = Console.readLine();
 
         return inputLength(playerInput) && inputIntegerCheck(playerInput) && inputIntegerRange(playerInput) && inputOverlapped(playerInput);
