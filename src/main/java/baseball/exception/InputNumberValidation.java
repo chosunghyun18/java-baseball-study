@@ -1,6 +1,5 @@
 package baseball.exception;
 
-import java.util.Arrays;
 
 import static baseball.config.Config.NUMBER_COUNT;
 import static baseball.config.Config.RESTART_NUMBER_COUNT;

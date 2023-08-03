@@ -1,6 +1,5 @@
 package baseball.controller;
 
-import baseball.controller.input.InningInput;
 import baseball.model.Computer;
 import baseball.model.Inning;
 import baseball.view.output.Notification;
@@ -18,7 +17,7 @@ public class GameContoller {
 
     private static void inGame(ArrayList<Integer> answer) {
         while (true) {
-            ArrayList<Integer> input = InningInput.numberInput();
+            ArrayList<Integer> input = InningInputController.numberInput();
             Inning inning = new Inning(answer, input);
             Notification.numberResult(inning.getBall(), inning.getStrike());
             if (inning.getStrike() == 3) {
@@ -31,7 +30,7 @@ public class GameContoller {
 
     private static void restart() {
         Notification.gameEnd();
-        int restart = InningInput.restartInput();
+        int restart = InningInputController.restartInput();
         if (restart == 1) {
             ArrayList<Integer> answer = Computer.getNumbers(NUMBER_COUNT);
             inGame(answer);

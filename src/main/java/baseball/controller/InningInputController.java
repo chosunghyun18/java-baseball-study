@@ -1,4 +1,4 @@
-package baseball.controller.input;
+package baseball.controller;
 
 import baseball.exception.InputNumberValidation;
 import baseball.util.Convertion;
@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 
-public class InningInput {
+public class InningInputController {
     public static ArrayList<Integer> numberInput() {
         Notification.numberInput();
         String input = Console.readLine();
