@@ -1,6 +1,6 @@
 package baseball;
 
-import static util.Message.START_GAME_MESSAGE;
+import baseball.view.OutputView;
 
 public class Game {
     private final Judge judge;
@@ -10,7 +10,7 @@ public class Game {
     }
 
     public void startGame(){
-        System.out.println(START_GAME_MESSAGE);
+        OutputView.startGameMessage();
         judge.compare();
     }
 }

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import static util.Message.GET_PLAYER_INPUT;
-import static util.Message.OVER_THREE_NUMBER;
+import static baseball.util.Message.GET_PLAYER_INPUT;
+import static baseball.util.Message.OVER_THREE_NUMBER;
 
 public class Player {
     private String playerInput;

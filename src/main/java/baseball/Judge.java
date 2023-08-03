@@ -1,9 +1,11 @@
 package baseball;
 
+import baseball.view.OutputView;
+
 import java.util.HashMap;
 import java.util.List;
 
-import static util.Message.*;
+import static baseball.util.Message.*;
 
 public class Judge {
     private final Computer computer;
@@ -19,7 +21,7 @@ public class Judge {
         List<Integer> computerNumber = computer.generateRandomNumber();
         do{
             initBaseballScore();
-            //TODO 플레이어 처리하고 결과 값 얻어서 결과값 가지고 다음 함수로 이동.
+            //플레이어 처리하고 결과 값 얻어서 결과값 가지고 다음 함수로 이동.
             List<Integer> playerNumber = player.makePlayerNumber();
             scoringResult(computerNumber, playerNumber);
         }while(continueGame());
@@ -56,33 +58,35 @@ public class Judge {
 
     //해당 결과에 맞게 문자열 출력
     public void printResult(){
-        printBall();
-        printStrike();
-        printNothing();
+        int ballCount = baseballScore.get('B');
+        int strikeCount = baseballScore.get('S');
+        printBall(ballCount);
+        printStrike(strikeCount);
+        printNothing(ballCount, strikeCount);
     }
 
-    private void printBall() {
-        if(baseballScore.get('B') != 0)
-            System.out.print(baseballScore.get('B')+BALL);
+    public void printBall(int ballCount){
+        if(ballCount != 0)
+            OutputView.printBallMessage(ballCount);
     }
 
-    private void printStrike() {
-        if(baseballScore.get('S') != 0)
-            System.out.print(baseballScore.get('S')+STRIKE);
+    public void printStrike(int strikeCount){
+        if(strikeCount != 0)
+            OutputView.printStrikeMessage(strikeCount);
     }
 
-    private void printNothing() {
-        if(baseballScore.get('S')==0 && baseballScore.get('B')==0)
-            System.out.println(NOTHING);
+    public void printNothing(int ballCount, int strikeCount){
+        if(ballCount==0 && strikeCount==0)
+            OutputView.printNothingMessage(ballCount, strikeCount);
         else
-            System.out.println();
+            OutputView.printEmptyLine();
     }
-
 
     //해당 결과에 맞게 게임 다시 진행 or 게임 종료
     public boolean continueGame(){
-        if(baseballScore.get('S')==3){
-            System.out.println(END_GAME_MESSAGE);
+        int strikeCount = baseballScore.get('S');
+        if(strikeCount==3){
+            OutputView.endGameMessage();
             return false;
         }
         return true;
