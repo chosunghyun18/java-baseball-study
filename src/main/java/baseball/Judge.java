@@ -20,8 +20,8 @@ public class Judge {
         do{
             initBaseballScore();
             //TODO 플레이어 처리하고 결과 값 얻어서 결과값 가지고 다음 함수로 이동.
-            //List<Integer> playerNumber = player.makePlayerNumber();
-            //scoringResult(computerNumber, );
+            List<Integer> playerNumber = player.makePlayerNumber();
+            scoringResult(computerNumber, playerNumber);
         }while(continueGame());
     }
 

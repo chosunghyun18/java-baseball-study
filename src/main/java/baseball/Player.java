@@ -6,17 +6,25 @@ import java.util.HashSet;
 import java.util.List;
 
 import static util.Message.GET_PLAYER_INPUT;
+import static util.Message.OVER_THREE_NUMBER;
 
 public class Player {
+    private String playerInput;
+    public List<Integer> makePlayerNumber() throws IllegalArgumentException{
+        if(getPlayerInput()){
+            return transStringToList(playerInput);
+        }
+        else{
+            throw new IllegalArgumentException(OVER_THREE_NUMBER);
+        }
+    }
+
     //입력을 받는다.
-    public void getPlayerInput(){
+    public boolean getPlayerInput(){
         System.out.println(GET_PLAYER_INPUT);
-        String playerInput = Console.readLine();
+        playerInput = Console.readLine();
 
-
-        //TODO 입력을 받아서 무엇을 할것인가...
-        //TODO 플레이어 어떻게 처리할 것인가...
-
+        return inputLength(playerInput) && inputIntegerCheck(playerInput) && inputIntegerRange(playerInput) && inputOverlapped(playerInput);
     }
 
     //문자열의 길이가 3이 맞는지
@@ -53,7 +61,7 @@ public class Player {
     }
 
     //입력이 유효하면 리스트로 만든다.
-    public List<Integer> makePlayerNumber(String playerInput){
+    public List<Integer> transStringToList(String playerInput){
         List<Integer> playerNumber = new ArrayList<>();
         for(int i=0; i<playerInput.length(); i++){
             int number = Character.getNumericValue(playerInput.charAt(i));
