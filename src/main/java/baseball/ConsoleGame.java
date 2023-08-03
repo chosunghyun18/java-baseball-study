@@ -2,11 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public interface ConsoleGame {
+public abstract class ConsoleGame {
 
   static String getUserInput(String message) {
     if (message != null) {
-      displayMessage(message);
+      System.out.print(message);
     }
     return Console.readLine().trim();
   }
@@ -15,7 +15,5 @@ public interface ConsoleGame {
     System.out.println(message);
   }
 
-  void initGame();
-
-  void playGame();
+  abstract void playGame();
 }
