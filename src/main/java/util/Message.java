@@ -10,6 +10,9 @@ public class Message {
     //public static final String OVER_THREE_NUMBER = "종복되지 않는 3자리 정수로 입력해주세요.";
 
     public static final String END_GAME_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    public static final String NOTHING = "낫싱";
+    public static final String STRIKE = "스트라이크";
+    public static final String BALL = "볼 ";
 
 
 }

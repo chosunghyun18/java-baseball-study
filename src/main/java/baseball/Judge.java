@@ -3,7 +3,7 @@ package baseball;
 import java.util.HashMap;
 import java.util.List;
 
-import static util.Message.END_GAME_MESSAGE;
+import static util.Message.*;
 
 public class Judge {
     private final Computer computer;
@@ -26,12 +26,11 @@ public class Judge {
     }
 
 
-
     //S, B, N 판단
     public void scoringResult(List<Integer> computerNumber, List<Integer> playerNumber){
         baseballScore.put('S', countStrike(computerNumber, playerNumber));
         baseballScore.put('B', countBall(computerNumber, playerNumber));
-        printingResult();
+        printResult();
     }
 
     public int countStrike(List<Integer> computerNumber, List<Integer> playerNumber){
@@ -56,9 +55,29 @@ public class Judge {
 
 
     //해당 결과에 맞게 문자열 출력
-    public void printingResult(){
-
+    public void printResult(){
+        printBall();
+        printStrike();
+        printNothing();
     }
+
+    private void printBall() {
+        if(baseballScore.get('B') != 0)
+            System.out.print(baseballScore.get('B')+BALL);
+    }
+
+    private void printStrike() {
+        if(baseballScore.get('S') != 0)
+            System.out.print(baseballScore.get('S')+STRIKE);
+    }
+
+    private void printNothing() {
+        if(baseballScore.get('S')==0 && baseballScore.get('B')==0)
+            System.out.println(NOTHING);
+        else
+            System.out.println();
+    }
+
 
     //해당 결과에 맞게 게임 다시 진행 or 게임 종료
     public boolean continueGame(){
