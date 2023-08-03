@@ -22,14 +22,15 @@ public class GameContoller {
             Inning inning = new Inning(answer, input);
             Notification.numberResult(inning.getBall(), inning.getStrike());
             if (inning.getStrike() == 3) {
+                restart();
                 break;
             }
+
         }
     }
 
-    private void restart(Inning inning) {
+    private static void restart() {
         Notification.gameEnd();
-        Notification.gameRestart();
         int restart = InningInput.restartInput();
         if (restart == 1) {
             ArrayList<Integer> answer = Computer.getNumbers(NUMBER_COUNT);
