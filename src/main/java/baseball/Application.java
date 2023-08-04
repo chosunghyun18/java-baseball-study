@@ -4,9 +4,7 @@ package baseball;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        do{
-            Game game = new Game();
-            game.startGame();
-        }while(RetryGame.againGame());
+        Start start = new Start();
+        start.startGame();
     }
 }

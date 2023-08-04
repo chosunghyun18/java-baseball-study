@@ -2,8 +2,7 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 import baseball.view.InputView;
-
-import static baseball.util.Message.*;
+;
 import static baseball.validateInput.retryGameValidateInput;
 
 public class RetryGame {

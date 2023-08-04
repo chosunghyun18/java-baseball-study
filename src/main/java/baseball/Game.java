@@ -9,7 +9,7 @@ public class Game {
         this.judge = new Judge();
     }
 
-    public void startGame(){
+    public void newGame() {
         OutputView.startGameMessage();
         judge.compare();
     }
