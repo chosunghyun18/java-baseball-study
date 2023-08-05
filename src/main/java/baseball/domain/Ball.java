@@ -10,10 +10,6 @@ public class Ball {
         this.ball = Objects.requireNonNull(givenNumber);
     }
 
-    public Integer getValueForTest() {
-        return ball;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
