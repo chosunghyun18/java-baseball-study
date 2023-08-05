@@ -45,7 +45,7 @@ public class Player extends GamePlayer {
         while (!clear3Strike) {
             initSettings();
             inputView.infoInsertNumber();
-            List<Integer> numbers = getGuessNumbers();
+            List<Integer> numbers = getPlayerInput();
             savePlayerBalls(numbers);
             clear3Strike = swingResult(computer);
         }
@@ -57,13 +57,13 @@ public class Player extends GamePlayer {
         return checkForGameEnd();
     }
 
-    public void savePlayerBalls(List<Integer> numbers) {
+    private void savePlayerBalls(List<Integer> numbers) {
         for (Integer number : numbers) {
             balls.add(new Ball(number));
         }
     }
 
-    public List<Integer> getGuessNumbers() {
+    private List<Integer> getPlayerInput() {
         String givenInput = Console.readLine();
         return inputValidate.numbersCheck(givenInput);
     }

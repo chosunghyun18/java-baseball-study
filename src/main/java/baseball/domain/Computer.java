@@ -21,12 +21,12 @@ public class Computer extends GameComputer {
     @Override
     public void setUpGame() {
         while (balls.size() < maxNumberOfBallsAmount) {
-            int randomNumber = pickNumber(minValueOfBall, maxValueOfBall);
+            int randomNumber = pickBall(minValueOfBall, maxValueOfBall);
             balls.add(new Ball(randomNumber));
         }
     }
 
-    public Integer pickNumber(int minValueOfBall, int maxValueOfBall) {
+    public Integer pickBall(int minValueOfBall, int maxValueOfBall) {
         return Randoms.pickNumberInRange(minValueOfBall, maxValueOfBall);
     }
 
