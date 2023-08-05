@@ -1,5 +1,7 @@
 package study;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -46,5 +48,19 @@ public class StringTest {
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range: 5");
     }
+    @Test
+    void set_test(){
+        Set<Integer> integers = new LinkedHashSet<>();
+        integers.add(0);
+        integers.add(1);
+        integers.add(2);
 
+        int index = 0 ;
+        for(Integer item : integers){
+            System.out.println(index);
+            System.out.println(item);
+            index++ ;
+        }
+
+    }
 }
