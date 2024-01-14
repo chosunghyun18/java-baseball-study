@@ -1,6 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -14,6 +13,7 @@ public class Application {
         List<Integer> computerValue = new ArrayList<>();
         while (computerValue.size() < 3) {
             int randomNum = Randoms.pickNumberInRange(1, 9);
+
             if (!computerValue.contains(randomNum)) {
                 computerValue.add(randomNum);
             }
